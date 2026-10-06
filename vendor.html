@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vendor Blanks | DRT RED CREATIONS</title>
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+
+  <body>
+    <header class="site-header">
+      <a class="brand" href="/index.html">
+        <img src="/logo.svg" alt="DRT RED CREATIONS logo" />
+      </a>
+
+      <button class="menu-toggle" aria-label="Open navigation menu">☰</button>
+
+      <nav class="nav-links">
+        <a href="/index.html">Home</a>
+        <a class="active" href="/vendor.html">Vendor Blanks</a>
+        <a href="/custom.html">Custom Orders</a>
+        <a href="/faqs.html">FAQs</a>
+        <a href="/about.html">About Us</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="page-hero vendor-hero">
+        <p class="eyebrow">For Makers, Crafters, and Small Businesses</p>
+        <h1>Blank mugs and tumblers ready for your next big idea.</h1>
+        <p>
+          Request pricing for ceramic mugs, glass mugs, skinny tumblers,
+          stainless steel tumblers, kids cups, and bulk vendor packs.
+        </p>
+      </section>
+
+      <section class="section">
+        <div class="section-heading">
+          <p class="eyebrow">Vendor Catalog</p>
+          <h2>Popular blank products</h2>
+        </div>
+
+        <div class="filter-bar" aria-label="Vendor product filters">
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="mugs">Mugs</button>
+          <button class="filter-btn" data-filter="tumblers">Tumblers</button>
+          <button class="filter-btn" data-filter="kids">Kids Cups</button>
+          <button class="filter-btn" data-filter="bulk">Bulk Packs</button>
+        </div>
+
+        <div class="card-grid three vendor-grid">
+          <article class="product-card vendor-item" data-category="mugs">
+            <div class="product-graphic">☕</div>
+            <h3>Ceramic Mug Blanks</h3>
+            <p>Classic white and colorful mug blanks for sublimation and gifts.</p>
+            <span class="badge">MOQ: 12</span>
+          </article>
+
+          <article class="product-card vendor-item" data-category="mugs">
+            <div class="product-graphic">🥛</div>
+            <h3>Glass Mug Blanks</h3>
+            <p>Clear glass mugs for classy custom designs and event sets.</p>
+            <span class="badge">MOQ: 12</span>
+          </article>
+
+          <article class="product-card vendor-item" data-category="tumblers">
+            <div class="product-graphic">🥤</div>
+            <h3>Skinny Tumblers</h3>
+            <p>Slim tumbler blanks in bold colors and popular finishes.</p>
+            <span class="badge">MOQ: 24</span>
+          </article>
+
+          <article class="product-card vendor-item" data-category="tumblers">
+            <div class="product-graphic">🧊</div>
+            <h3>Stainless Steel Tumblers</h3>
+            <p>Durable stainless tumblers for everyday use and business branding.</p>
+            <span class="badge">MOQ: 24</span>
+          </article>
+
+          <article class="product-card vendor-item" data-category="kids">
+            <div class="product-graphic">🧃</div>
+            <h3>Kids Cup Blanks</h3>
+            <p>Colorful kid-friendly cups for school, parties, and sports teams.</p>
+            <span class="badge">MOQ: 12</span>
+          </article>
+
+          <article class="product-card vendor-item" data-category="bulk">
+            <div class="product-graphic">📦</div>
+            <h3>Bulk Vendor Packs</h3>
+            <p>Mixed packs for creators who want variety and better pricing.</p>
+            <span class="badge">Custom MOQ</span>
+          </article>
+        </div>
+      </section>
+
+      <section class="section form-section">
+        <div class="section-heading">
+          <p class="eyebrow">Request Vendor Pricing</p>
+          <h2>Tell us what blanks you need.</h2>
+        </div>
+
+        <form class="smart-form" id="vendorForm">
+          <div class="form-row">
+            <label>
+              Business Name
+              <input type="text" name="businessName" required placeholder="Your business name" />
+            </label>
+
+            <label>
+              Contact Email
+              <input type="email" name="email" required placeholder="you@example.com" />
+            </label>
+          </div>
+
+          <div class="form-row">
+            <label>
+              Product Type
+              <select name="productType" required>
+                <option value="">Choose a product</option>
+                <option>Ceramic mugs</option>
+                <option>Glass mugs</option>
+                <option>Skinny tumblers</option>
+                <option>Stainless steel tumblers</option>
+                <option>Kids cups</option>
+                <option>Bulk vendor packs</option>
+              </select>
+            </label>
+
+            <label>
+              Estimated Quantity
+              <input type="number" name="quantity" min="1" required placeholder="Example: 50" />
+            </label>
+          </div>
+
+          <label>
+            Message
+            <textarea name="message" rows="5" placeholder="Tell us colors, sizes, deadlines, or special requests."></textarea>
+          </label>
+
+          <button class="btn primary" type="submit">Submit Vendor Request</button>
+
+          <p class="form-status" id="vendorStatus" role="status"></p>
+        </form>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>© 2026 DRT RED CREATIONS. Vendor blanks and custom creations.</p>
+      <div class="social-links">
+        <a href="https://instagram.com/drtredcreations" target="_blank">Instagram</a>
+        <a href="https://facebook.com/drtredcreations" target="_blank">Facebook</a>
+        <a href="https://tiktok.com/@drtredcreations" target="_blank">TikTok</a>
+      </div>
+    </footer>
+
+    <script type="module" src="/src/main.ts"></script>
+    <script src="/src/legacy.js"></script>
+  </body>
+</html>

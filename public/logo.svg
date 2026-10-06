@@ -1,0 +1,13 @@
+<svg width="1200" height="500" viewBox="0 0 1200 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="500" rx="40" fill="#C8102E"/>
+  <circle cx="140" cy="105" r="32" fill="white" opacity="0.18"/>
+  <circle cx="1045" cy="385" r="52" fill="white" opacity="0.16"/>
+  <circle cx="1000" cy="95" r="22" fill="white" opacity="0.2"/>
+  <path d="M195 370C260 305 315 405 380 340C445 275 505 375 570 310C635 245 705 350 770 285C835 220 900 315 975 250" stroke="white" stroke-width="16" stroke-linecap="round" opacity="0.25"/>
+  <text x="600" y="205" text-anchor="middle" font-family="Arial Black, Impact, sans-serif" font-size="116" fill="white" letter-spacing="4">
+    DRT RED
+  </text>
+  <text x="600" y="335" text-anchor="middle" font-family="Arial Black, Impact, sans-serif" font-size="104" fill="white" letter-spacing="3">
+    CREATIONS
+  </text>
+</svg>

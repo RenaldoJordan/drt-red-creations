@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Custom Orders | DRT RED CREATIONS</title>
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+
+  <body>
+    <header class="site-header">
+      <a class="brand" href="/index.html">
+        <img src="/logo.svg" alt="DRT RED CREATIONS logo" />
+      </a>
+
+      <button class="menu-toggle" aria-label="Open navigation menu">☰</button>
+
+      <nav class="nav-links">
+        <a href="/index.html">Home</a>
+        <a href="/vendor.html">Vendor Blanks</a>
+        <a class="active" href="/custom.html">Custom Orders</a>
+        <a href="/faqs.html">FAQs</a>
+        <a href="/about.html">About Us</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="page-hero custom-hero">
+        <p class="eyebrow">Design Your Own</p>
+        <h1>Build a custom cup that feels made just for you.</h1>
+        <p>
+          Choose your cup type, color, text, font style, quantity, rush option,
+          and upload a logo or image for preview.
+        </p>
+      </section>
+
+      <section class="section custom-builder">
+        <form class="smart-form custom-form" id="customOrderForm">
+          <h2>Custom Order Details</h2>
+
+          <label>
+            Name or Text
+            <input
+              id="customText"
+              type="text"
+              name="customText"
+              maxlength="28"
+              required
+              placeholder="Example: Jordan Family"
+            />
+          </label>
+
+          <div class="form-row">
+            <label>
+              Cup Type
+              <select id="cupType" name="cupType" required>
+                <option value="ceramic">Ceramic Mug</option>
+                <option value="glass">Glass Mug</option>
+                <option value="skinny">Skinny Tumbler</option>
+                <option value="steel">Stainless Steel Tumbler</option>
+                <option value="kids">Kids Cup</option>
+              </select>
+            </label>
+
+            <label>
+              Cup Color
+              <input id="cupColor" type="color" name="cupColor" value="#C8102E" />
+            </label>
+          </div>
+
+          <label>
+            Font Style
+            <select id="fontStyle" name="fontStyle">
+              <option value="bold">Bold</option>
+              <option value="script">Script</option>
+              <option value="playful">Playful</option>
+              <option value="clean">Clean</option>
+            </select>
+          </label>
+
+          <fieldset class="radio-group">
+            <legend>Rush Order?</legend>
+
+            <label>
+              <input type="radio" name="rush" value="no" checked />
+              No rush
+            </label>
+
+            <label>
+              <input type="radio" name="rush" value="yes" />
+              Rush order +$15
+            </label>
+          </fieldset>
+
+          <label>
+            Quantity
+            <input id="quantity" type="number" name="quantity" min="1" value="1" required />
+          </label>
+
+          <label>
+            Upload Image or Logo
+            <input id="imageUpload" type="file" name="imageUpload" accept="image/*" />
+          </label>
+
+          <label>
+            Notes or Instructions
+            <textarea
+              name="notes"
+              rows="5"
+              placeholder="Share colors, themes, deadlines, spelling notes, or special requests."
+            ></textarea>
+          </label>
+
+          <button class="btn primary" type="submit">Submit Custom Order Request</button>
+
+          <p class="form-status" id="customStatus" role="status"></p>
+        </form>
+
+        <aside class="preview-panel">
+          <h2>Live Preview</h2>
+
+          <div class="cup-preview" id="cupPreview">
+            <div class="preview-shine"></div>
+            <span id="previewText">Your Text</span>
+            <img id="previewImage" alt="Uploaded logo preview" />
+          </div>
+
+          <div class="estimate-box">
+            <p>Estimated Price</p>
+            <strong id="priceEstimate">$18.00</strong>
+            <small>
+              Final pricing may change based on artwork complexity, materials,
+              and order details.
+            </small>
+          </div>
+        </aside>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>© 2026 DRT RED CREATIONS. Designed with color, care, and creativity.</p>
+      <div class="social-links">
+        <a href="https://instagram.com/drtredcreations" target="_blank">Instagram</a>
+        <a href="https://facebook.com/drtredcreations" target="_blank">Facebook</a>
+        <a href="https://tiktok.com/@drtredcreations" target="_blank">TikTok</a>
+      </div>
+    </footer>
+
+    <script type="module" src="/src/main.ts"></script>
+    <script src="/src/legacy.js"></script>
+  </body>
+</html>

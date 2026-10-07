@@ -1,7 +1,4 @@
 // Main TypeScript file for DRT RED CREATIONS
-// This file controls navigation, forms, filters, FAQ accordion,
-// the custom order preview, price estimate, and upload preview.
-
 import "./style.css";
 
 type CupType = "ceramic" | "glass" | "skinny" | "steel" | "kids";
@@ -14,28 +11,29 @@ interface CupPricing {
 const pricingMap: Record<CupType, CupPricing> = {
   ceramic: {
     label: "Ceramic Mug",
-    basePrice: 18
+    basePrice: 18,
   },
   glass: {
     label: "Glass Mug",
-    basePrice: 20
+    basePrice: 20,
   },
   skinny: {
     label: "Skinny Tumbler",
-    basePrice: 28
+    basePrice: 28,
   },
   steel: {
     label: "Stainless Steel Tumbler",
-    basePrice: 32
+    basePrice: 32,
   },
   kids: {
     label: "Kids Cup",
-    basePrice: 16
-  }
+    basePrice: 16,
+  },
 };
 
 document.addEventListener("DOMContentLoaded", () => {
   setupMobileMenu();
+  setupHomeCarousel();
   setupVendorFilters();
   setupFaqAccordion();
   setupVendorForm();
@@ -50,11 +48,110 @@ function setupMobileMenu(): void {
 
   menuButton.addEventListener("click", () => {
     navLinks.classList.toggle("open");
-
     const isOpen = navLinks.classList.contains("open");
-    menuButton.setAttribute("aria-label", isOpen ? "Close navigation menu" : "Open navigation menu");
+    menuButton.setAttribute(
+      "aria-label",
+      isOpen ? "Close navigation menu" : "Open navigation menu"
+    );
     menuButton.textContent = isOpen ? "×" : "☰";
   });
+}
+
+function setupHomeCarousel(): void {
+  const carousel = document.querySelector<HTMLElement>("#homeCarousel");
+  const track = document.querySelector<HTMLElement>("#carouselTrack");
+  const slides = document.querySelectorAll<HTMLElement>(".carousel-slide");
+  const prevButton = document.querySelector<HTMLButtonElement>("#carouselPrev");
+  const nextButton = document.querySelector<HTMLButtonElement>("#carouselNext");
+  const dotsContainer = document.querySelector<HTMLElement>("#carouselDots");
+
+  // If this page does not have the carousel, return cleanly
+  if (!carousel || !track || !slides.length || !prevButton || !nextButton || !dotsContainer) {
+    return;
+  }
+
+  let currentSlide = 0;
+  let autoSlideTimer: number;
+
+  function renderDots(): void {
+    if (!dotsContainer) return;
+    dotsContainer.innerHTML = "";
+
+    slides.forEach((_, index) => {
+      const dot = document.createElement("button");
+      dot.className = index === currentSlide ? "carousel-dot active" : "carousel-dot";
+      dot.setAttribute("aria-label", `Go to featured product ${index + 1}`);
+
+      dot.addEventListener("click", () => {
+        goToSlide(index);
+        restartAutoSlide();
+      });
+
+      dotsContainer.appendChild(dot);
+    });
+  }
+
+  function updateCarousel(): void {
+    if (!track) return;
+    track.style.transform = `translateX(-${currentSlide * 100}%)`;
+
+    slides.forEach((slide, index) => {
+      slide.classList.toggle("active", index === currentSlide);
+    });
+
+    const dots = dotsContainer?.querySelectorAll<HTMLButtonElement>("button.carousel-dot");
+    dots?.forEach((dot, index) => {
+      dot.classList.toggle("active", index === currentSlide);
+    });
+  }
+
+  function goToSlide(index: number): void {
+    currentSlide = index;
+    updateCarousel();
+  }
+
+  function goToNextSlide(): void {
+    currentSlide = (currentSlide + 1) % slides.length;
+    updateCarousel();
+  }
+
+  function goToPreviousSlide(): void {
+    currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+    updateCarousel();
+  }
+
+  function startAutoSlide(): void {
+    autoSlideTimer = window.setInterval(() => {
+      goToNextSlide();
+    }, 5000);
+  }
+
+  function restartAutoSlide(): void {
+    window.clearInterval(autoSlideTimer);
+    startAutoSlide();
+  }
+
+  nextButton.addEventListener("click", () => {
+    goToNextSlide();
+    restartAutoSlide();
+  });
+
+  prevButton.addEventListener("click", () => {
+    goToPreviousSlide();
+    restartAutoSlide();
+  });
+
+  carousel.addEventListener("mouseenter", () => {
+    window.clearInterval(autoSlideTimer);
+  });
+
+  carousel.addEventListener("mouseleave", () => {
+    startAutoSlide();
+  });
+
+  renderDots();
+  updateCarousel();
+  startAutoSlide();
 }
 
 function setupVendorFilters(): void {
@@ -72,7 +169,6 @@ function setupVendorFilters(): void {
 
       vendorItems.forEach((item) => {
         const category = item.dataset.category;
-
         if (selectedFilter === "all" || category === selectedFilter) {
           item.classList.remove("hidden");
         } else {
@@ -93,7 +189,6 @@ function setupFaqAccordion(): void {
 
     question?.addEventListener("click", () => {
       const isOpen = item.classList.contains("open");
-
       faqItems.forEach((faq) => faq.classList.remove("open"));
 
       if (!isOpen) {
@@ -152,14 +247,14 @@ function setupCustomOrderBuilder(): void {
     quantityInput,
     cupPreview,
     previewText,
-    priceEstimate
+    priceEstimate,
   ];
 
   if (requiredElements.some((element) => !element)) return;
 
   const updatePreview = (): void => {
     const selectedCupType = cupTypeSelect!.value as CupType;
-    const selectedPricing = pricingMap[selectedCupType];
+    const selectedPricing = pricingMap[selectedCupType] || pricingMap.ceramic;
     const quantity = Math.max(Number(quantityInput!.value) || 1, 1);
 
     const rushValue =
